@@ -32,7 +32,7 @@ export class ErisEnvLoader {
     switch (type) {
       case 'boolean':
         this.logging('Environment initialized', `The ${name} environment variable has been initialized`, 'debug');
-        return Boolean(value) as EnvUtilTypes[T];
+        return (value === 'true') as EnvUtilTypes[T];
       case 'number':
         this.logging('Environment initialized', `The ${name} environment variable has been initialized`, 'debug');
         return Number(value) as EnvUtilTypes[T];
