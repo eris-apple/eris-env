@@ -1,8 +1,8 @@
-import { ErisLogger } from 'eris-logger';
-import { expand } from 'dotenv-expand';
-import { config } from 'dotenv';
+import {ErisLogger} from 'eris-logger';
+import {expand} from 'dotenv-expand';
+import {config} from 'dotenv';
 
-import { EnvUtilType, EnvUtilTypes } from './types';
+import {EnvUtilType, EnvUtilTypes} from './types';
 
 const dotenvFile = config();
 expand(dotenvFile);
@@ -10,14 +10,17 @@ expand(dotenvFile);
 export class ErisEnvLoader {
   logger: ErisLogger | false;
 
-  constructor({ logger }: { logger?: ErisLogger | boolean }) {
+  constructor({logger}: { logger?: ErisLogger | boolean }) {
     if (logger instanceof ErisLogger) this.logger = logger;
-    else if (typeof logger === 'undefined' || !logger) this.logger = new ErisLogger({ terminal: { use: true, options: {} }, options: {} });
+    else if (typeof logger === 'undefined') this.logger = new ErisLogger({
+      terminal: {use: true, options: {}},
+      options: {}
+    });
     else this.logger = false;
   }
 
   private logging(title: string, message: string, method: 'error' | 'debug'): void {
-    if (this.logger instanceof ErisLogger) this.logger[method]({ title, message });
+    if (this.logger instanceof ErisLogger) this.logger[method]({title, message});
   }
 
   getEnv<T extends EnvUtilType>(type?: T, ...names: string[]): EnvUtilTypes[T] {
