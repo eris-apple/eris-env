@@ -1,10 +1,6 @@
 import { ErisEnvLoader } from '../src';
 
-const envLoader = new ErisEnvLoader({ logger: false });
-
-const prefix = {
-  database: 'DATABASE',
-};
+const envLoader = new ErisEnvLoader({});
 
 const config = {
   database: {
