@@ -14,14 +14,14 @@ export class ErisEnvLoader {
     if (logger instanceof ErisLogger) this.logger = logger;
     else if (typeof logger === 'undefined')
       this.logger = new ErisLogger({
-        terminal: { use: true },
+        terminal: { use: true, options: {} },
         options: {},
       });
     else this.logger = false;
   }
 
   private logging(message: string, method: 'error' | 'debug'): void {
-    if (this.logger instanceof ErisLogger) this.logger[method](message, method === 'error' ? new Error(message) : {});
+    if (this.logger instanceof ErisLogger) this.logger[method]({title: "ENV LOADER", message, error: method === 'error' ? new Error(message) : {}}, );
   }
 
   getEnv<T extends EnvUtilType>(type?: T, ...names: string[]): EnvUtilTypes[T] {
