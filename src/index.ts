@@ -46,7 +46,7 @@ export class ErisEnvLoader {
     }
   }
 
-  getEnvWithFallback<T extends EnvUtilType>(type: T, fallback: T, ...names: string[]): EnvUtilTypes[T] {
+  getEnvWithFallback<T extends EnvUtilType>(type: T, fallback: any, ...names: string[]): EnvUtilTypes[T] {
     const name = names.join('_');
     let value = process.env[name];
 

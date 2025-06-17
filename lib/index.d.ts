@@ -7,5 +7,5 @@ export declare class ErisEnvLoader {
     });
     private logging;
     getEnv<T extends EnvUtilType>(type?: T, ...names: string[]): EnvUtilTypes[T];
-    getEnvWithFallback<T extends EnvUtilType>(type: T, fallback: T, ...names: string[]): EnvUtilTypes[T];
+    getEnvWithFallback<T extends EnvUtilType>(type: T, fallback: any, ...names: string[]): EnvUtilTypes[T];
 }

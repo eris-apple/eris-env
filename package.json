@@ -1,6 +1,6 @@
 {
   "name": "eris-env",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Env",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
